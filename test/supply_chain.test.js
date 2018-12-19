@@ -32,7 +32,7 @@ contract('SupplyChain', function(accounts) {
 */
         const name = "book"
 	const tx = await supplyChain.addItem(name, price, {from: alice})
-	if (tx.logs[0].event === "forSale") {
+	if (tx.logs[0].event === "ForSale") {
 		sku = tx.logs[0].args.sku.toString(10)
 		eventEmitted = true
 	}
