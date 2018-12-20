@@ -1,3 +1,9 @@
+/*
+    This exercise has been updated to use Solidity version 0.5
+    Breaking changes from 0.4 to 0.5 can be found here: 
+    https://solidity.readthedocs.io/en/v0.5.0/050-breaking-changes.html
+*/
+
 pragma solidity ^0.5.0;
 
 contract SupplyChain {
