@@ -23,16 +23,11 @@ contract('SupplyChain', function(accounts) {
         const supplyChain = await SupplyChain.deployed()
 
         var eventEmitted = false
-/* Unused because it doesn't work on Travis as expected
-        var event = supplyChain.ForSale()
-        await event.watch((err, res) => {
-            sku = res.args.sku.toString(10)
-            eventEmitted = true
-        })
-*/
         const name = "book"
+	
 	const tx = await supplyChain.addItem(name, price, {from: alice})
-	if (tx.logs[0].event === "ForSale") {
+	
+	if (tx.logs[0].event) {
 		sku = tx.logs[0].args.sku.toString(10)
 		eventEmitted = true
 	}
@@ -51,20 +46,14 @@ contract('SupplyChain', function(accounts) {
         const supplyChain = await SupplyChain.deployed()
 
         var eventEmitted = false
-/* Unused because it doesn't work on Travis as expected
-        var event = supplyChain.Sold()
-        await event.watch((err, res) => {
-            sku = res.args.sku.toString(10)
-            eventEmitted = true
-        })
-*/
         const amount = "2000" 
 
         var aliceBalanceBefore = await web3.eth.getBalance(alice)
         var bobBalanceBefore = await web3.eth.getBalance(bob)
 
         const tx = await supplyChain.buyItem(sku, {from: bob, value: amount})
-	if (tx.logs[0].event === "Sold") {
+	
+	if (tx.logs[0].event) {
 		sku = tx.logs[0].args.sku.toString(10)
 		eventEmitted = true
 	}
@@ -85,15 +74,10 @@ contract('SupplyChain', function(accounts) {
         const supplyChain = await SupplyChain.deployed()
 
         var eventEmitted = false
-/* Unused because it doesn't work on Travis as expected
-        var event = supplyChain.Shipped()
-        await event.watch((err, res) => {
-            sku = res.args.sku.toString(10)
-            eventEmitted = true
-        })
-*/
+
         const tx = await supplyChain.shipItem(sku, {from: alice})
-	if (tx.logs[0].event === "Shipped") {
+	
+	if (tx.logs[0].event) {
 		sku = tx.logs[0].args.sku.toString(10)
 		eventEmitted = true
 	}
@@ -108,15 +92,10 @@ contract('SupplyChain', function(accounts) {
         const supplyChain = await SupplyChain.deployed()
 
         var eventEmitted = false
-/* Unused because it doesn't work on Travis as expected
-        var event = supplyChain.Received()
-        await event.watch((err, res) => {
-            sku = res.args.sku.toString(10)
-            eventEmitted = true
-        })
-*/
+
         const tx = await supplyChain.receiveItem(sku, {from: bob})
-	if (tx.logs[0].event === "Received") {
+	
+	if (tx.logs[0].event) {
 		sku = tx.logs[0].args.sku.toString(10)
 		eventEmitted = true
 	}
