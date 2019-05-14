@@ -1,6 +1,6 @@
 # Supply Chain Exercise
 
-The Supply Chain directory is a truffle project that contains the required contract, migration and test files. In this exercise you are going to implement the SupplyChain.sol contract and write some test in Solidity.
+The Supply Chain directory is a truffle project that contains the required contract, migration and test files. In this exercise you are going to implement the SupplyChain.sol contract and write some tests in Solidity.
 
 Clone this repo to your local machine.
 
