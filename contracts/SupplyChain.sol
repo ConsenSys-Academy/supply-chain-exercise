@@ -29,6 +29,7 @@ contract SupplyChain {
     Here, add a name, sku, price, state, seller, and buyer
     We've left you to figure out what the appropriate types are,
     if you need help you can ask around :)
+    Be sure to add "payable" to addresses that will be handling value transfer
   */
 
   /* Create 4 events with the same name as each possible State (see above)
