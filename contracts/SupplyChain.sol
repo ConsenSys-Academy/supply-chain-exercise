@@ -33,7 +33,8 @@ contract SupplyChain {
   */
 
   /* Create 4 events with the same name as each possible State (see above)
-    Each event should accept one argument, the sku*/
+    Prefix each event with "Log" for clarity, so the forSale event will be called "LogForSale"
+    Each event should accept one argument, the sku */
 
 /* Create a modifer that checks if the msg.sender is the owner of the contract */
 
