@@ -91,7 +91,7 @@ contract SupplyChain {
   {}
 
   /* We have these functions completed so we can run tests, just ignore it :) */
-  function fetchItem(uint _sku) public view returns (string name, uint sku, uint price, uint state, address seller, address buyer) {
+  function fetchItem(uint _sku) public view returns (string memory name, uint sku, uint price, uint state, address seller, address buyer) {
     name = items[_sku].name;
     sku = items[_sku].sku;
     price = items[_sku].price;
