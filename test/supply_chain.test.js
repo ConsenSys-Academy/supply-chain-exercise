@@ -1,5 +1,7 @@
 /*
 
+The public version of the file used for testing can be found here: https://gist.github.com/ConsenSys-Academy/7d59ba6ebe581c1ffcc981469e226c6e
+
 This test file has been updated for Truffle version 5.0. If your tests are failing, make sure that you are
 using Truffle version 5.0. You can check this by running "truffle version"  in the terminal. If version 5 is not
 installed, you can uninstall the existing version with `npm uninstall -g truffle` and install the latest version (5.0)
