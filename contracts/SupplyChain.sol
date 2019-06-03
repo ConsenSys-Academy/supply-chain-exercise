@@ -51,7 +51,11 @@ contract SupplyChain {
 
   /* For each of the following modifiers, use what you learned about modifiers
    to give them functionality. For example, the forSale modifier should require
-   that the item with the given sku has the state ForSale. */
+   that the item with the given sku has the state ForSale. 
+   Note that the uninitialized Item.State is 0, which is also the index of the ForSale value,
+   so checking that Item.State == ForSale is not sufficient to check that an Item is for sale.
+   Hint: What item properties will be non-zero when an Item has been added?
+   */
   modifier forSale
   modifier sold
   modifier shipped
