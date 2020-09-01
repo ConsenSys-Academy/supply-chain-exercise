@@ -4,7 +4,7 @@ node_js:
 
 before_script:
   - npm install -g ganache-cli
-  - npm install -g truffle@5.0.0
+  - npm install -g truffle
 
 script:
   - git clone https://gist.github.com/7d59ba6ebe581c1ffcc981469e226c6e.git
