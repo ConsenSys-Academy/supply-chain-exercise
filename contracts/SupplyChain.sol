@@ -1,10 +1,10 @@
 /*
-    This exercise has been updated to use Solidity version 0.5
-    Breaking changes from 0.4 to 0.5 can be found here: 
-    https://solidity.readthedocs.io/en/v0.5.0/050-breaking-changes.html
+    This exercise has been updated to use Solidity version 0.6
+    Breaking changes from 0.5 to 0.6 can be found here: 
+    https://solidity.readthedocs.io/en/v0.6.12/060-breaking-changes.html
 */
 
-pragma solidity ^0.5.0;
+pragma solidity >=0.6.0 <0.7.0;
 
 contract SupplyChain {
 
@@ -56,10 +56,10 @@ contract SupplyChain {
    so checking that Item.State == ForSale is not sufficient to check that an Item is for sale.
    Hint: What item properties will be non-zero when an Item has been added?
    */
-  modifier forSale
-  modifier sold
-  modifier shipped
-  modifier received
+  modifier forSale () {};
+  modifier sold () {};
+  modifier shipped () {};
+  modifier received () {};
 
 
   constructor() public {
