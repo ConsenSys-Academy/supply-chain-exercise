@@ -55,11 +55,15 @@ contract SupplyChain {
    Note that the uninitialized Item.State is 0, which is also the index of the ForSale value,
    so checking that Item.State == ForSale is not sufficient to check that an Item is for sale.
    Hint: What item properties will be non-zero when an Item has been added?
+   
+   PS: Uncomment the modifier but keep the name for testing purposes!
    */
-  modifier forSale() {};
-  modifier sold() {};
-  modifier shipped() {};
-  modifier received() {};
+  
+  
+  /// modifier forSale
+  /// modifier sold
+  /// modifier shipped
+  /// modifier received
 
 
   constructor() public {
