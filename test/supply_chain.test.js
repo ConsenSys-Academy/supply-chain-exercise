@@ -11,6 +11,7 @@ with `npm install -g truffle`.
 let BN = web3.utils.BN;
 let SupplyChain = artifacts.require("SupplyChain");
 let { catchRevert } = require("./exceptionsHelpers.js");
+const { items: ItemStruct, isDefined, isPayable, isType } = require("./ast-helper");
 
 contract("SupplyChain", function (accounts) {
   const [_owner, alice, bob] = accounts;
@@ -24,6 +25,141 @@ contract("SupplyChain", function (accounts) {
 
   beforeEach(async () => {
     instance = await SupplyChain.new();
+  });
+
+  describe("State variables", () => {
+    it.skip("should have an owner", async () => {
+      assert.equal(typeof instance.owner, 'function', "the contract has no owner");
+    });
+
+    it.skip("should have an skuCount", async () => {
+      assert.equal(typeof instance.skuCount, 'function', "the contract has no skuCount");
+    });
+
+    describe.skip("state enum", () => {
+      let enumState;
+      before(() => {
+        enumState = SupplyChain.enums.State;
+        assert(
+          enumState,
+          "The contract should define an Enum called State"
+        );
+      });
+
+      it.skip("should define `ForSale`", () => {
+        assert(
+          enumState.hasOwnProperty('ForSale'),
+          "The enum does not have a `ForSale` value"
+        );
+      });
+
+      it.skip("should define `Sold`", () => {
+        assert(
+          enumState.hasOwnProperty('Sold'),
+          "The enum does not have a `Sold` value"
+        );
+      });
+
+      it.skip("should define `Shipped`", () => {
+        assert(
+          enumState.hasOwnProperty('Shipped'),
+          "The enum does not have a `Shipped` value"
+        );
+      });
+
+      it.skip("should define `Received`", () => {
+        assert(
+          enumState.hasOwnProperty('Received'),
+          "The enum does not have a `Received` value"
+        );
+      });
+    })
+
+    describe.skip("Item struct", () => {
+      let subjectStruct;
+
+      before(() => {
+        subjectStruct = ItemStruct(SupplyChain);
+        assert(
+          subjectStruct !== null, 
+          "The contract should define an `Item Struct`"
+        );
+      });
+
+      it.skip("should have a `name`", () => {
+        assert(
+          isDefined(subjectStruct)("name"), 
+          "Struct Item should have a `name` member"
+        );
+        assert(
+          isType(subjectStruct)("name")("string"), 
+          "`name` should be of type `string`"
+        );
+      });
+
+      it.skip("should have a `sku`", () => {
+        assert(
+          isDefined(subjectStruct)("sku"), 
+          "Struct Item should have a `sku` member"
+        );
+        assert(
+          isType(subjectStruct)("sku")("uint"), 
+          "`sku` should be of type `uint`"
+        );
+      });
+
+      it.skip("should have a `price`", () => {
+        assert(
+          isDefined(subjectStruct)("price"), 
+          "Struct Item should have a `price` member"
+        );
+        assert(
+          isType(subjectStruct)("price")("uint"), 
+          "`price` should be of type `uint`"
+        );
+      });
+
+      it.skip("should have a `state`", () => {
+        assert(
+          isDefined(subjectStruct)("state"), 
+          "Struct Item should have a `state` member"
+        );
+        assert(
+          isType(subjectStruct)("state")("State"), 
+          "`state` should be of type `State`"
+        );
+      });
+
+      it.skip("should have a `seller`", () => {
+        assert(
+          isDefined(subjectStruct)("seller"), 
+          "Struct Item should have a `seller` member"
+        );
+        assert(
+          isType(subjectStruct)("seller")("address"), 
+          "`seller` should be of type `address`"
+        );
+        assert(
+          isPayable(subjectStruct)("seller"), 
+          "`seller` should be payable"
+        );
+      });
+
+      it.skip("should have a `buyer`", () => {
+        assert(
+          isDefined(subjectStruct)("buyer"), 
+          "Struct Item should have a `buyer` member"
+        );
+        assert(
+          isType(subjectStruct)("buyer")("address"), 
+          "`buyer` should be of type `address`"
+        );
+        assert(
+          isPayable(subjectStruct)("buyer"), 
+          "`buyer` should be payable"
+        );
+      });
+    });
   });
 
   it.skip("should add an item with the provided name and price", async () => {
@@ -43,8 +179,8 @@ contract("SupplyChain", function (accounts) {
     );
     assert.equal(
       result[3].toString(10),
-      0,
-      'the state of the item should be "For Sale", which should be declared first in the State Enum',
+      SupplyChain.State.ForSale,
+      'the state of the item should be "For Sale"',
     );
     assert.equal(
       result[4],
@@ -87,8 +223,8 @@ contract("SupplyChain", function (accounts) {
 
     assert.equal(
       result[3].toString(10),
-      1,
-      'the state of the item should be "Sold", which should be declared second in the State Enum',
+      SupplyChain.State.Sold,
+      'the state of the item should be "Sold"',
     );
     assert.equal(
       result[5],
@@ -140,8 +276,8 @@ contract("SupplyChain", function (accounts) {
 
     assert.equal(
       result[3].toString(10),
-      2,
-      'the state of the item should be "Shipped", which should be declared third in the State Enum',
+      SupplyChain.State.Shipped,
+      'the state of the item should be "Shipped"',
     );
   });
 
@@ -173,8 +309,8 @@ contract("SupplyChain", function (accounts) {
 
     assert.equal(
       result[3].toString(10),
-      3,
-      'the state of the item should be "Received", which should be declared fourth in the State Enum',
+      SupplyChain.State.Received,
+      'the state of the item should be "Received"',
     );
   });
 
