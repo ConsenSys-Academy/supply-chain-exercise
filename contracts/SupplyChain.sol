@@ -29,7 +29,6 @@ contract SupplyChain {
   //
   // <code goes here...>
   
-
   // Create 4 events with the same name as each possible State (see above)
   // Prefix each event with "Log" for clarity, so the forSale event will be
   // called "LogForSale" Each event should accept one argument, the sku 
@@ -76,10 +75,13 @@ contract SupplyChain {
     // 2. Initialize the sku count to 0. Question, is this necessary?
   }
 
-  function addItem(string memory _name, uint _price) public returns(bool){
-    // emit LogForSale(skuCount);
+  function addItem(string memory _name, uint _price) public returns (bool) {
+    // 1. Create a new item and put in array
+    // 2. Increment the skuCount by one
+    // 3. Emit the appropriate event
+    // 4. return true
 
-    // Create a new item and put in array
+    // hint:
     // items[skuCount] = Item({
     //  name: _name, 
     //  sku: skuCount, 
@@ -88,9 +90,10 @@ contract SupplyChain {
     //  seller: msg.sender, 
     //  buyer: address(0)
     //});
-
+    //
     //skuCount = skuCount + 1;
-    return true;
+    // emit LogForSale(skuCount);
+    // return true;
   }
 
   // Implement this buyItem function. 
@@ -120,18 +123,16 @@ contract SupplyChain {
   // 3. Call the event associated with this function!
   function receiveItem(uint sku) public {}
 
-  // We have these functions completed so we can run tests, just ignore it :)
-  /*
-  function fetchItem(uint _sku) public view 
-    returns (string memory name, uint sku, uint price, uint state, address seller, address buyer) 
-  {
-    name = items[_sku].name;
-    sku = items[_sku].sku;
-    price = items[_sku].price;
-    state = uint(items[_sku].state);
-    seller = items[_sku].seller;
-    buyer = items[_sku].buyer;
-    return (name, sku, price, state, seller, buyer);
-  }
-  */
+  // Uncomment the following code block. it is needed to run tests
+  /* function fetchItem(uint _sku) public view */ 
+  /*   returns (string memory name, uint sku, uint price, uint state, address seller, address buyer) */ 
+  /* { */
+  /*   name = items[_sku].name; */
+  /*   sku = items[_sku].sku; */
+  /*   price = items[_sku].price; */
+  /*   state = uint(items[_sku].state); */
+  /*   seller = items[_sku].seller; */
+  /*   buyer = items[_sku].buyer; */
+  /*   return (name, sku, price, state, seller, buyer); */
+  /* } */
 }
