@@ -42,7 +42,7 @@ and then modify the Solidity contract to make the test pass.
   - [ ] should have an skuCount
     <details><summary>click for hint</summary>
 
-    The contract will keep track of the [sku](https://en.wikipedia.org/wiki/Stock_keeping_unit)s in our supply chain. Each item we sell will have a unique sku number. Lets implment that as a counter, called `skuCounter`
+    The contract will keep track of the [sku](https://en.wikipedia.org/wiki/Stock_keeping_unit)s in our supply chain. Each item for sale will have a unique sku number. Lets implment that as a counter, called `skuCounter`
 
       - remove the `.skip` modifier to enable this test to begin
 
@@ -55,12 +55,16 @@ and then modify the Solidity contract to make the test pass.
 
 ### enum State
 
+We need a way to model the different states an item transitions to in the supply chain. When a seller puts a new item for sale, that item's state is `ForSale`. Then when someone buys it, it becomes `Sold`, then `Shipped` and finally `Received`. In Solidity we can use an `enum` to represent these different states. Remove the `skip` annotation from the enum tests to proceed.
+
   - [ ] should define `ForSale`
   - [ ] should define `Sold`
   - [ ] should define `Shipped`
   - [ ] should define `Received`
 
 ### Item struct
+
+How do we describe an item in our supply chain? It is a union of properties: `name`, `sku`, `price`, `state`, `seller` and `buyer`. We can use a Solidity `struct` to model this Item. Remove the `skip` annotation from the `Item struct` tests and proceed.
 
   - [ ] should have a `name`
   - [ ] should have a `sku`
@@ -70,6 +74,8 @@ and then modify the Solidity contract to make the test pass.
   - [ ] should have a `buyer`
 
 ### SupplyChain Logic
+
+**NOTE** Before proceeding, you should un-comment the  `fetchItem` function in the contract. This function is necessary to validate the remaining tests.
 
   - [ ] should add an item with the provided name and price
   - [ ] should emit a LogForSale event when an item is added
