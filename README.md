@@ -17,54 +17,51 @@ this exercise.
 
 ## Instructions
 
-Check out the testing files to see how tests are implemented in Javascript. We
-will go over the details of implementing tests later in the course.
-
-For each of the items below, you will uncomment the associated JavaScript test
-and then modify the Solidity contract to make the test pass.
+Check out the test file to see the tests that define the behavior of the
+SupplyChain smart contract. Notice the tests are in `it` blocks and have a
+`skip` modifier, which disables the test. To enable the test, remove the
+`.skip` modifier. Tests can have two modifiers: `skip` which skips the test,
+and `only` which runs only that test. But what if more than one test have the
+`only` modifier you may ask? Well only those test marked such will be executed.
 
 ### State variables
 
   - [ ] should have an owner
-    <details><summary>click for hint</summary>
+    <details><summary>:book:</summary>
 
-    The contract should have an owner, which is a an address and also public.
-      - remove the `.skip` modifier to enable this test to begin
+    The contract should have an owner, of type address that is public.
+    **hint:** define a public variable `owner` of type address
 
-    ```JavaScript
-    it.skip("should have an owner", async () => {
-      assert.equal(typeof instance.owner, 'function', "the contract has no owner");
-    });
-
-    ```
     </details>
 
   - [ ] should have an skuCount
-    <details><summary>click for hint</summary>
+    <details><summary>:book:</summary>
 
-    The contract will keep track of the [sku](https://en.wikipedia.org/wiki/Stock_keeping_unit)s in our supply chain. Each item for sale will have a unique sku number. Lets implment that as a counter, called `skuCounter`
+    The contract will keep track of the
+    [sku](https://en.wikipedia.org/wiki/Stock_keeping_unit)s in our supply
+    chain. Each item for sale will have a unique sku number. 
 
-      - remove the `.skip` modifier to enable this test to begin
+    **hint**: define a public variable called `skuCounter` of type uint
 
-    ```JavaScript
-    it.skip("should have an skuCount", async () => {
-      assert.equal(typeof instance.skuCount, 'function', "the contract has no skuCount");
-    });
-    ```
     </details>
 
 ### enum State
 
-We need a way to model the different states an item transitions to in the supply chain. When a seller puts a new item for sale, that item's state is `ForSale`. Then when someone buys it, it becomes `Sold`, then `Shipped` and finally `Received`. In Solidity we can use an `enum` to represent these different states. Remove the `skip` annotation from the enum tests to proceed.
+Items can exist in our Supply chain domain in a few states. In Solidity an
+`enum` can be used to represent these different states. Remove the `skip`
+annotation from the enum tests to proceed.
 
-  - [ ] should define `ForSale`
-  - [ ] should define `Sold`
-  - [ ] should define `Shipped`
-  - [ ] should define `Received`
+  - [ ] should define `ForSale` for when an item is put on sale
+  - [ ] should define `Sold` for when an item has been purchased
+  - [ ] should define `Shipped` for when an item has been shippd to the buyer
+  - [ ] should define `Received` for when the shipped item has been received by the buyer
 
 ### Item struct
 
-How do we describe an item in our supply chain? It is a union of properties: `name`, `sku`, `price`, `state`, `seller` and `buyer`. We can use a Solidity `struct` to model this Item. Remove the `skip` annotation from the `Item struct` tests and proceed.
+How do we describe an item in our supply chain? It is a union of properties:
+`name`, `sku`, `price`, `state`, `seller` and `buyer`. We can use a Solidity
+`struct` to model this Item. Remove the `skip` annotation from the `Item
+struct` tests and proceed.
 
   - [ ] should have a `name`
   - [ ] should have a `sku`
@@ -79,7 +76,7 @@ How do we describe an item in our supply chain? It is a union of properties: `na
 
   - [ ] should add an item with the provided name and price
     <details><summary>:book:</summary>
-    use case: As a seller, I want to place an item for sale.
+    use case: As a seller, I want to add an item for sale. I should 
     </details>
   - [ ] should emit a LogForSale event when an item is added
     <details><summary>:book:</summary>
