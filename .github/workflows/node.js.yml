@@ -40,7 +40,8 @@ jobs:
 
       - name: Setup for student grading
         if: ${{ github.repository_owner	!= 'Consensys-Academy' }}
-        run: git checkout d7358826793d75ad51e1c8384988fd43919f5d5b test/supply_chain.test.js
+        # get initial commit. this will be the first commit for repos created from template
+        run: git checkout $(git rev-list --max-parents=0 master) test/supply_chain.test.js
 
       - name: Run tests
         run: truffle test test/supply_chain.test.js
