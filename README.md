@@ -4,6 +4,8 @@ The Supply Chain directory is a truffle project that contains the required
 contract, migration and test files. In this exercise you are going to implement
 the SupplyChain.sol contract and write some tests in Solidity.
 
+## Instructions
+
 Clone this repo to your local machine.
 
 Follow the comments outlined in SupplyChain.sol (in the contracts directory) to
@@ -15,14 +17,14 @@ To test your implementation run `$ truffle test` from the terminal in the
 project directory. There are **23 pending tests** that you must pass to complete
 this exercise.
 
-## Instructions
+Similar to the Simple Bank Exercise, check out the test file to see the tests that define the behavior of the
+SupplyChain smart contract. 
 
-Check out the test file to see the tests that define the behavior of the
-SupplyChain smart contract. Notice the tests are in `it` blocks and have a
+<!-- Notice the tests are in `it` blocks and have a
 `skip` modifier, which disables the test. To enable the test, remove the
 `.skip` modifier. Tests can have two modifiers: `skip` which skips the test,
 and `only` which runs only that test. But what if more than one test have the
-`only` modifier you may ask? Well only those test marked such will be executed.
+`only` modifier you may ask? Well only those test marked such will be executed. -->
 
 ### State variables
 
