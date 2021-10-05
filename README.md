@@ -10,8 +10,9 @@ Clone this repo to your local machine.
 
 Follow the comments outlined in SupplyChain.sol (in the contracts directory) to
 implement its functions. We have written a set of tests (in javascript) to
-determine if your implementation is correct. As an additional challenge, try
-writing some Solidity tests in TestSupplyChain.sol.
+determine if your implementation is correct. 
+
+As an optional challenge, try writing some Solidity tests in TestSupplyChain.sol. This is not required, however!
 
 To test your implementation run `$ truffle test` from the terminal in the
 project directory. There are **23 pending tests** that you must pass to complete
