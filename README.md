@@ -21,6 +21,8 @@ this exercise.
 Similar to the Simple Bank Exercise, check out the test file to see the tests that define the behavior of the
 SupplyChain smart contract. 
 
+Note: Truffle will default to use a Solidity 0.5.x compiler with this contract as-is. To use the latest 0.8.x compiler, please comment out lines 9-14 in [truffle-config.js.](truffle-config.js)
+
 <!-- Notice the tests are in `it` blocks and have a
 `skip` modifier, which disables the test. To enable the test, remove the
 `.skip` modifier. Tests can have two modifiers: `skip` which skips the test,
