@@ -93,8 +93,9 @@ contract("SupplyChain", function (accounts) {
           "Struct Item should have a `sku` member"
         );
         assert(
-          isType(subjectStruct)("sku")("uint"), 
-          "`sku` should be of type `uint`"
+          isType(subjectStruct)("sku")("uint") ||
+            isType(subjectStruct)("sku")("uint256"),
+          "`sku` should be of type `uint256`"
         );
       });
 
@@ -104,8 +105,9 @@ contract("SupplyChain", function (accounts) {
           "Struct Item should have a `price` member"
         );
         assert(
-          isType(subjectStruct)("price")("uint"), 
-          "`price` should be of type `uint`"
+          isType(subjectStruct)("price")("uint") ||
+            isType(subjectStruct)("price")("uint256"), 
+          "`price` should be of type `uint256` "
         );
       });
 
