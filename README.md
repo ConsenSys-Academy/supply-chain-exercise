@@ -6,7 +6,7 @@ the SupplyChain.sol contract and write some tests in Solidity.
 
 ## Instructions
 
-Clone this repo to your local machine.
+Clone this repo to your local machine and run `$ npm install` to install the OpenZeppelin Test Helpers.
 
 Follow the comments outlined in SupplyChain.sol (in the contracts directory) to
 implement its functions. We have written a set of tests (in javascript) to

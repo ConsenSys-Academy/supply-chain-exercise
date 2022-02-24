@@ -1,6 +1,6 @@
 let BN = web3.utils.BN;
 let SupplyChain = artifacts.require("SupplyChain");
-let { catchRevert } = require("./exceptionsHelpers.js");
+const { expectRevert } = require('@openzeppelin/test-helpers');
 const { items: ItemStruct, isDefined, isPayable, isType } = require("./ast-helper");
 
 contract("SupplyChain", function (accounts) {
@@ -239,7 +239,7 @@ contract("SupplyChain", function (accounts) {
 
     it("should error when not enough value is sent when purchasing an item", async () => {
       await instance.addItem(name, price, { from: alice });
-      await catchRevert(instance.buyItem(0, { from: bob, value: 1 }));
+      await expectRevert.assertion(instance.buyItem(0, { from: bob, value: 1 }));
     });
 
     it("should emit LogSold event when and item is purchased", async () => {
@@ -258,7 +258,7 @@ contract("SupplyChain", function (accounts) {
     it("should revert when someone that is not the seller tries to call shipItem()", async () => {
       await instance.addItem(name, price, { from: alice });
       await instance.buyItem(0, { from: bob, value: price });
-      await catchRevert(instance.shipItem(0, { from: bob }));
+      await expectRevert.unspecified(instance.shipItem(0, { from: bob }));
     });
 
     it("should allow the seller to mark the item as shipped", async () => {
@@ -313,7 +313,7 @@ contract("SupplyChain", function (accounts) {
       await instance.buyItem(0, { from: bob, value: excessAmount });
       await instance.shipItem(0, { from: alice });
 
-      await catchRevert(instance.receiveItem(0, { from: alice }));
+      await expectRevert.unspecified(instance.receiveItem(0, { from: alice }));
     });
 
     it("should emit a LogReceived event when an item is received", async () => {

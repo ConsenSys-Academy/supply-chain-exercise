@@ -34,6 +34,9 @@ jobs:
       - name: Install latest truffle
         run: npm -g install truffle
 
+      - name: Install npm dependencies
+        run: npm install
+
       - name: Setup for Consensys Academy
         if: ${{ github.repository_owner	== 'Consensys-Academy' }}
         run: git checkout cea0c82a1a36991ea5943f8e315af30dde903b89 test/supply_chain.test.js
